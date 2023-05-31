@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Food Crave | Log In </title>
+		<link rel = "icon" type = "image/png" href = "logo.png">
+		<style type = "text/css">
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 50px;
+				background-color: #f2bd63;
+			}
+			.container {
+				width: 150px;
+				margin: 60 auto;
+				background-color: #cc6600;
+				padding: 40px;
+				border-radius: 50px;
+				box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+				width: 20%;
+				margin: 0 auto;
+				text-align: center;
+			}
+			h1 {
+				font-size: 2em;
+				margin-bottom: .1em;
+			}
+			form {
+				display: inline-block;
+				text-align: center;
+			}
+			label {
+				display: block;
+				margin-bottom: 0.5em;
+			}
+			input {
+				padding: 0.5em;
+				margin-bottom: 1em;
+				width: 100%;
+				box-sizing: border-box;
+			}
+			button {
+				padding: 0.5em;
+				text-align: center;
+				background-color: #f2bd63;
+				color: #fff;
+				border: none;
+				border-radius: 0.25em;
+				cursor: pointer;
+			}
+			button:hover {
+				background-color: #cc6600;
+			}
+			.message {
+				border-radius: 0.25em;
+				padding: 1em;
+				margin-top: 1em;
+				position: absolute;
+				top: 15%;
+				left: 50%;
+				transform: translateX(-50%);
+				z-index: 1;
+				opacity: 0;
+				transition: opacity 0.3s ease-in-out;
+			}
+			.success {
+				background-color: #4caf50;
+				color: #fff;
+			}
+			.error {
+				background-color: #f44336;
+				color: #fff;
+			}
+			.show-message {
+				opacity: 1;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div class="container">
+			<h1>Sign In</h1>
+			<br/ ><br />
+			<form>
+				<label for="username">Username:</label>
+				<input type="text" id="username" name="username" required>
+				<label for="password">Password:</label>
+				<input type="password" id="password" name="password" required>
+				<button type="submit" onclick="
+					var username = document.getElementById('username').value;
+					var password = document.getElementById('password').value;
+					var message = '';
+					var messageType = '';
+					if (username === 'sample' && password === 'sample') {
+						messageType = 'logging in';
+						window.location.href = './home'; 
+					} else {
+						message = 'Incorrect username or password.';
+						messageType = 'error';
+					}
+					var messageBox = document.createElement('div');
+					messageBox.className = 'message ' + messageType;
+					messageBox.innerHTML = message;
+					document.body.appendChild(messageBox);
+					setTimeout(function() {
+					messageBox.classList.add('show-message');
+					}, 10);
+					setTimeout(function() {
+					messageBox.classList.remove('show-message');
+					setTimeout(function() {
+						document.body.removeChild(messageBox);
+					}, 300);
+					}, 3000);
+					return false;
+				">Sign In</button>
+			</form>
+		</div>
+	</body>
+</html>
