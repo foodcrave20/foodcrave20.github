@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Food Crave | Log In </title>
+		<link rel = "icon" type = "image/png" href = "logo.png">
+		<link rel = "stylesheet" href = "index.css">
+	</head>
+	
+	<body>
+		<div class = "nav">
+			<img src = "logo.png" alt = "Food Crave" class = "logo">
+			<h1> WELCOME TO FOOD CRAVE! </h1>
+		</div>	
+	
+		<div class="container">
+			<h1>Sign In</h1>
+			<br/ ><br />
+			<form>
+				<label for="username">Username:</label>
+				<input type="text" id="username" name="username" required>
+				<label for="password">Password:</label>
+				<input type="password" id="password" name="password" required>
+				<button type="submit" onclick="
+					var username = document.getElementById('username').value;
+					var password = document.getElementById('password').value;
+					var message = '';
+					var messageType = '';
+					if (username === 'sample' && password === 'sample') {
+						messageType = 'logging in';
+						window.location.href = './home.html'; 
+					} else {
+						message = 'Incorrect username or password.';
+						messageType = 'error';
+					}
+					var messageBox = document.createElement('div');
+					messageBox.className = 'message ' + messageType;
+					messageBox.innerHTML = message;
+					document.body.appendChild(messageBox);
+					setTimeout(function() {
+					messageBox.classList.add('show-message');
+					}, 10);
+					setTimeout(function() {
+					messageBox.classList.remove('show-message');
+					setTimeout(function() {
+						document.body.removeChild(messageBox);
+					}, 300);
+					}, 3000);
+					return false;
+				">Sign In</button>
+			</form>
+		</div>
+	</body>
+</html>
